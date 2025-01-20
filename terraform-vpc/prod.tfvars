@@ -1,0 +1,14 @@
+vpc_name             = "Prod-VPC"
+cidr_block           = "10.0.0.0/16"
+public_subnet_cidrs  = ["10.10.0.0/24", "10.20.0.0/24"]
+private_subnet_cidrs = ["10.30.0.0/24", "10.40.0.0/24"]
+container_name       = "nginx"
+container_image      = "nginx:latest"
+container_port       = 80
+task_cpu             = 256 # 256 CPU units (0.25 vCPU)
+task_memory          = 512 # 512 MiB
+ecs_cluster_name     = "Prod-ecs-cluster"
+environment          = "Prod"
+alb_name             = "Prod_alb"
+region               = "us-east-1"
+alb_port             = 80
