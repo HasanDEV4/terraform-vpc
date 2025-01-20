@@ -66,3 +66,8 @@ variable "ecs_service_name" {
   type        = string
   default     = "nginx-service"
 }
+
+variable "azs" {
+  description = "List of availability zones"
+  type        = list(string)
+}
