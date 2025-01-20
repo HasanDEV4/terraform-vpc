@@ -114,17 +114,23 @@ resource "aws_ecs_service" "nginx_service" {
 }
 # Inside modules/ecs/main.tf
 
+# modules/ecs/main.tf
+
+# Call to the VPC module
+module "vpc" {
+  source = "../vpc"  # Yeh path aapke project structure ke hisaab se ho sakta hai
+}
+
 resource "aws_lb" "app_lb" {
   name               = var.alb_name
   internal           = false
   load_balancer_type = "application"
   security_groups    = [aws_security_group.alb_sg.id]
-  subnets            = module.vpc.public_subnet_ids
-
+  subnets            = module.vpc.public_subnet_ids  # Reference to VPC module output
   enable_deletion_protection = false
-
   enable_cross_zone_load_balancing = true
 }
+
 
 resource "aws_lb_target_group" "app_target_group" {
   name     = "${var.alb_name}-tg"
