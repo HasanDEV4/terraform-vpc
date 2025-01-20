@@ -116,11 +116,6 @@ resource "aws_ecs_service" "nginx_service" {
 
 # modules/ecs/main.tf
 
-# Call to the VPC module
-module "vpc" {
-  source = "../vpc"  # Yeh path aapke project structure ke hisaab se ho sakta hai
-}
-
 resource "aws_lb" "app_lb" {
   name               = var.alb_name
   internal           = false
