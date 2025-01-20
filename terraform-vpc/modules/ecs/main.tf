@@ -112,11 +112,6 @@ resource "aws_ecs_service" "nginx_service" {
     aws_lb_listener.app_lb_listener
   ]
 }
-# Inside modules/ecs/main.tf
-
-module "vpc" {
-  source = "".modules/vpc""  # Ya jo bhi aapke project structure mein sahi ho
-}
 
 resource "aws_lb" "app_lb" {
   name               = var.alb_name
