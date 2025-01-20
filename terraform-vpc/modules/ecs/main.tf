@@ -1,27 +1,27 @@
-#resource "aws_iam_role" "ecs_task_execution" {
-  #name = "${var.container_name}-ecs-task-execution-role"
-  #assume_role_policy = jsonencode({
-    #Version = "2012-10-17"
-    #Statement = [
-      #{
-        #Effect = "Allow"
-        #Principal = {
-          #Service = "ecs-tasks.amazonaws.com"
-        #}
-       # Action = "sts:AssumeRole"
-     # }
-    #]
-  #})
+resource "aws_iam_role" "ecs_task_execution" {
+  name = "${var.container_name}-ecs-task-execution-role"
+  assume_role_policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [
+      {
+        Effect = "Allow"
+        Principal = {
+          Service = "ecs-tasks.amazonaws.com"
+        }
+        Action = "sts:AssumeRole"
+      }
+    ]
+  })
 
- # tags = {
-  #  Name = "${var.container_name}-ecs-task-execution-role"
- # }
-#}
+  tags = {
+    Name = "${var.container_name}-ecs-task-execution-role"
+  }
+}
 
-#resource "aws_iam_role_policy_attachment" "ecs_task_execution" {
-  #role       = aws_iam_role.ecs_task_execution.name
-  #policy_arn = "arn:aws:iam::aws:policy/service-role/AmazonECSTaskExecutionRolePolicy"
-#}
+resource "aws_iam_role_policy_attachment" "ecs_task_execution" {
+  role       = aws_iam_role.ecs_task_execution.name
+  policy_arn = "arn:aws:iam::aws:policy/service-role/AmazonECSTaskExecutionRolePolicy"
+}
 
 resource "aws_ecs_cluster" "nginx" {
   name = var.ecs_cluster_name
@@ -119,7 +119,7 @@ resource "aws_lb" "app_lb" {
   internal           = false
   load_balancer_type = "application"
   security_groups    = [aws_security_group.alb_sg.id]
-  subnets            = var.public_subnet_ids # Add the public subnets here
+  subnets            = aws_subnet.public[*].id  # Dynamically referenced subnets
 
   enable_deletion_protection = false
 
