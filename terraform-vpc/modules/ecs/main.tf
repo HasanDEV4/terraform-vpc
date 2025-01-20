@@ -118,7 +118,7 @@ resource "aws_lb" "app_lb" {
   internal           = false
   load_balancer_type = "application"
   security_groups    = [aws_security_group.alb_sg.id]
-  subnets            = module.vpc.public_subnet_ids  # Reference to VPC module output
+  subnets            = var.public_subnet_ids  # Reference to VPC module output
   enable_deletion_protection = false
   enable_cross_zone_load_balancing = true
 }
