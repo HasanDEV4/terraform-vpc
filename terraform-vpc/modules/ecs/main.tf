@@ -114,7 +114,9 @@ resource "aws_ecs_service" "nginx_service" {
 }
 # Inside modules/ecs/main.tf
 
-# modules/ecs/main.tf
+module "vpc" {
+  source = ""./modules/vpc""  # Ya jo bhi aapke project structure mein sahi ho
+}
 
 resource "aws_lb" "app_lb" {
   name               = var.alb_name
