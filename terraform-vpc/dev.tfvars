@@ -12,3 +12,4 @@ environment          = "dev"
 alb_name             = "dev_alb"
 region               = "us-east-1"
 alb_port             = 80
+azs                  = ["us-east-1a", "us-east-1b"]
