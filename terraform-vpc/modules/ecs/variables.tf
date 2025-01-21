@@ -59,3 +59,8 @@ variable "alb_port" {
   type        = number
   default     = 80
 }
+
+variable "execution_role_arn" {
+  description = "execution role ARN"
+  type        = string
+}
