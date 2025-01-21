@@ -14,3 +14,4 @@ region               = "us-east-1"
 alb_port             = 80
 azs                  = ["us-east-1a", "us-east-1b"]
 ecs_task_execution_role_arn   = "arn:aws:iam::851725275673:role/ecsTaskExecutionRole"
+ecs_task_execution_role_name = ecsTaskExecutionRole
