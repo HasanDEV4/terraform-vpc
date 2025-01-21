@@ -13,7 +13,7 @@ resource "aws_ecs_task_definition" "nginx" {
   requires_compatibilities = ["FARGATE"]
   cpu                      = var.task_cpu
   memory                   = var.task_memory
-  execution_role_arn       = "arn:aws:iam::851725275673:role/ecsTaskExecutionRole"
+  execution_role_arn       = var.execution_role_arn
 
   container_definitions = jsonencode([
     {
