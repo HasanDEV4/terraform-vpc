@@ -60,7 +60,7 @@ variable "alb_port" {
   default     = 80
 }
 
-variable "execution_role_arn" {
-  description = "execution role ARN"
+variable "ecs_task_execution_role_arn" {
+  description = "ARN of the existing IAM role for ECS task execution"
   type        = string
 }
