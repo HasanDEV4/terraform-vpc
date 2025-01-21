@@ -26,7 +26,7 @@ module "ecs" {
   task_memory        = var.task_memory
   task_cpu           = var.task_cpu
   ecs_service_name   = var.ecs_service_name
-  execution_role_arn = var.execution_role_arn
+  ecs_task_execution_role_arn = var.ecs_task_execution_role_arn
 
 }
 
