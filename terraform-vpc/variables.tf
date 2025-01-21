@@ -71,3 +71,8 @@ variable "azs" {
   description = "List of availability zones"
   type        = list(string)
 }
+
+variable "execution_role_arn" {
+  description = "execution role ARN"
+  type        = string
+}
