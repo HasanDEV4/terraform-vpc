@@ -70,17 +70,7 @@ resource "aws_security_group" "ecs" {
   }
 }
 
-resource "aws_ecs_service" "nginx_service" {
-  name            = var.ecs_service_name
-  cluster         = aws_ecs_cluster.nginx.id
-  task_definition = aws_ecs_task_definition.nginx.arn
-  desired_count   = 1
 
-  network_configuration {
-    subnets          = var.private_subnet_ids
-    security_groups  = [aws_security_group.ecs.id]
-    assign_public_ip = false
-  }
 
   load_balancer {
     target_group_arn = aws_lb_target_group.app_target_group.arn
