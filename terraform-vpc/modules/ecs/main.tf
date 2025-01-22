@@ -112,14 +112,12 @@ resource "aws_lb_listener" "app_lb_listener" {
   protocol          = "HTTP"
 
   default_action {
-    type             = "fixed-response"
-    fixed_response {
-      status_code = 200
-      content_type = "text/plain"
-      message_body = "OK"
-    }
+    type             = "forward"
+    target_group_arn = aws_lb_target_group.app_target_group.arn
   }
 }
+
+
 resource "aws_security_group" "alb_sg" {
   name        = "alb-sg"
   description = "Allow inbound traffic to ALB"
