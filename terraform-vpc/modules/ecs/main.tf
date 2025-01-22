@@ -45,7 +45,16 @@ resource "aws_ecs_service" "nginx" {
     assign_public_ip = true
   }
 
-  depends_on = [aws_ecs_task_definition.nginx]
+  load_balancer {
+    target_group_arn = aws_lb_target_group.app_target_group.arn
+    container_name   = var.container_name
+    container_port   = var.container_port
+  }
+
+  depends_on = [
+    aws_lb_listener.app_lb_listener,
+    aws_ecs_task_definition.nginx
+  ]
 }
 
 resource "aws_security_group" "ecs" {
@@ -79,7 +88,8 @@ resource "aws_security_group" "ecs" {
   }
 
   depends_on = [
-    aws_lb_listener.app_lb_listener
+    aws_lb_listener.app_lb_listener,
+    aws_ecs_task_definition.nginx
   ]
 }
 
