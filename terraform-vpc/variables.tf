@@ -81,3 +81,11 @@ variable "ecs_task_execution_role_name" {
   description = "Name of the existing ECS task execution IAM role"
   type        = string
 }
+
+variable "public_subnet_ids" {
+  type = list(string)
+}
+
+variable "vpc_id" {
+  type = list(string)
+} 
