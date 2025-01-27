@@ -52,7 +52,7 @@ resource "aws_eip" "nat_gateway_eip" {
 # NAT Gateway
 resource "aws_nat_gateway" "nat_gateway" {
   allocation_id = aws_eip.nat_gateway_eip.id
-  subnet_id     = var.public_subnet_ids[0]  # Use first public subnet for NAT Gateway
+  subnet_id     = var.public_subnet_cidrs[0]  # Use first public subnet for NAT Gateway
   tags = {
     Name = "nat-gateway"
   }
@@ -60,7 +60,7 @@ resource "aws_nat_gateway" "nat_gateway" {
 
 # Private Route Table
 resource "aws_route_table" "private_route_table" {
-  vpc_id = var.vpc_id
+  vpc_id = var.cidr_block
   tags = {
     Name = "private-route-table"
   }
@@ -75,8 +75,8 @@ resource "aws_route" "private_route_nat" {
 
 # Associate Private Subnets with Private Route Table
 resource "aws_route_table_association" "private_route_table_association" {
-  count          = length(var.private_subnet_ids)
-  subnet_id      = var.private_subnet_ids[count.index]
+  count          = length(var.private_subnet_cidrs)
+  subnet_id      = var.private_subnet_cidrs[count.index]
   route_table_id = aws_route_table.private_route_table.id
 }
 
