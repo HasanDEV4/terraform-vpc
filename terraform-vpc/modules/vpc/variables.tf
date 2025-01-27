@@ -19,6 +19,17 @@ variable "azs" {
   type        = list(string)
 }
 
+variable "nat_gateway_id" {
+  type = list(string)
+}
+
+variable "private_route_table_id" {
+  type = list(string)
+}
+
+
+
+
 
 
 
