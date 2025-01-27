@@ -18,3 +18,13 @@ variable "azs" {
   description = "List of availability zones"
   type        = list(string)
 }
+
+variable "public_subnet_ids" {
+  type = list(string)
+}
+
+variable "vpc_id" {
+  type = list(string)
+} 
+
+
