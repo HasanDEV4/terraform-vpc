@@ -12,8 +12,8 @@ module "vpc" {
   public_subnet_cidrs  = var.public_subnet_cidrs
   private_subnet_cidrs = var.private_subnet_cidrs
   azs                  = var.azs
-  nat_gateway_id          = aws_nat_gateway.nat.id
-  private_route_table_id  = aws_route_table.private.id
+  nat_gateway_id          = aws_nat_gateway.nat_gateway.id
+  private_route_table_id  = aws_route_table.private_route_table.id
 }
 
 module "ecs" {
