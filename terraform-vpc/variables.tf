@@ -82,4 +82,12 @@ variable "ecs_task_execution_role_name" {
   type        = string
 }
 
+variable "nat_gateway_id" {
+  type = list(string)
+}
+
+variable "private_route_table_id" {
+  type = list(string)
+}
+
 
