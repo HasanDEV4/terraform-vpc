@@ -14,6 +14,7 @@ module "vpc" {
   azs                  = var.azs
   nat_gateway_id          = aws_nat_gateway.nat_gateway.id
   private_route_table_id  = aws_route_table.private_route_table.id
+  enable_nat_gateway     = true
 }
 
 module "ecs" {
