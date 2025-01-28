@@ -11,10 +11,10 @@ output "private_subnet_ids" {
 }
 
 output "nat_gateway_id" {
-  value = var.enable_nat_gateway ? aws_nat_gateway.nat_gateway[0].id : null
+  value = aws_nat_gateway.main.id
 }
 
 output "private_route_table_id" {
-  value = aws_route_table.private_route_table.id
+  value = aws_route_table.private.id
 }
 
