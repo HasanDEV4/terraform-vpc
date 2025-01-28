@@ -63,7 +63,7 @@ resource "aws_route_table_association" "public" {
 # NAT Gateway (Enable only if var.enable_nat_gateway = true)
 resource "aws_eip" "nat" {
   count = var.enable_nat_gateway ? 1 : 0
-  vpc   = true
+  domain   = vpc
 }
 
 resource "aws_nat_gateway" "nat_gateway" {
