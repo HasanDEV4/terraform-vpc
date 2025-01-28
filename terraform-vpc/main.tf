@@ -25,15 +25,6 @@ output "private_route_table_id" {
 }
 
 
-module "app" {
-  source                 = "./modules/app"
-  vpc_id                 = module.vpc.vpc_id
-  nat_gateway_id         = module.vpc.nat_gateway_id
-  private_route_table_id = module.vpc.private_route_table_id
-}
-
-
-
 module "ecs" {
   source             = "./modules/ecs"
   vpc_id             = module.vpc.vpc_id
