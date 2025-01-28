@@ -11,9 +11,10 @@ output "private_subnet_ids" {
 }
 
 output "nat_gateway_id" {
-  value = module.vpc.nat_gateway_id
+  value = var.enable_nat_gateway ? aws_nat_gateway.nat_gateway[0].id : null
 }
 
 output "private_route_table_id" {
-  value = module.vpc.private_route_table_id
+  value = aws_route_table.private_route_table.id
 }
+
