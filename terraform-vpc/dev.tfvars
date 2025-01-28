@@ -15,5 +15,4 @@ alb_port             = 80
 azs                  = ["us-east-1a", "us-east-1b"]
 ecs_task_execution_role_arn   = "arn:aws:iam::851725275673:role/ecsTaskExecutionRole"
 ecs_task_execution_role_name = "ecsTaskExecutionRole"
-nat_gateway_id          = aws_nat_gateway.nat_gateway.id
-private_route_table_id  = aws_route_table.private_route_table.id
+
