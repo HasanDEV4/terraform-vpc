@@ -28,3 +28,16 @@ variable "enable_nat_gateway" {
   type        = bool
   default     = false
 }
+
+variable "nat_gateway_id" {
+  description = "ID of the NAT Gateway"
+  type        = list(string)
+  default     = []
+}
+
+variable "private_route_table_id" {
+  description = "ID of the private route table"
+  type        = list(string)
+  default     = []
+}
+
