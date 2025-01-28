@@ -12,10 +12,18 @@ module "vpc" {
   public_subnet_cidrs  = var.public_subnet_cidrs
   private_subnet_cidrs = var.private_subnet_cidrs
   azs                  = var.azs
-  nat_gateway_id          = aws_nat_gateway.nat_gateway.id
-  private_route_table_id  = aws_route_table.private_route_table.id
-  enable_nat_gateway     = true
+  enable_nat_gateway   = true
 }
+
+# Ab in outputs ka use karein agar nat gateway aur route table ID chahiye
+output "nat_gateway_id" {
+  value = module.vpc.nat_gateway_id
+}
+
+output "private_route_table_id" {
+  value = module.vpc.private_route_table_id
+}
+
 
 module "ecs" {
   source             = "./modules/ecs"
