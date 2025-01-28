@@ -83,11 +83,16 @@ variable "ecs_task_execution_role_name" {
 }
 
 variable "nat_gateway_id" {
-  type = list(string)
+  description = "ID of the NAT Gateway"
+  type        = list(string)
+  default     = []
 }
 
 variable "private_route_table_id" {
-  type = list(string)
+  description = "ID of the private route table"
+  type        = list(string)
+  default     = []
 }
+
 
 
