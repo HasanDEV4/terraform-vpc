@@ -16,13 +16,13 @@ module "vpc" {
 }
 
 # Ab in outputs ka use karein agar nat gateway aur route table ID chahiye
-#output "nat_gateway_id" {
-  #value = module.vpc.nat_gateway_id
-#}
+output "nat_gateway_id" {
+  value = module.vpc.nat_gateway_id
+}
 
-#output "private_route_table_id" {
-  #value = module.vpc.private_route_table_id
-#}
+output "private_route_table_id" {
+  value = module.vpc.private_route_table_id
+}
 
 
 module "ecs" {
