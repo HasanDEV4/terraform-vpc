@@ -51,7 +51,7 @@ variable "ecs_service_name" {
 variable "alb_name" {
   description = "The name of the Application Load Balancer"
   type        = string
-  default     = "my-app-alb"
+
 }
 
 variable "alb_port" {
